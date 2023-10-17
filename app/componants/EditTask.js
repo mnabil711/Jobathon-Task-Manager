@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const EditTask = () => {
+const EditTask = ({ edited }) => {
   const [task, setTask] = useState({
     name: "",
     description: "",
@@ -23,7 +23,8 @@ const EditTask = () => {
     setNameInputValue("");
     setDescInputValue("");
     setStatusInputValue("");
-    console.log(task);
+    edited = task;
+    console.log(edited)
   };
 
   const handleNameChange = (e) => {
@@ -40,22 +41,22 @@ const EditTask = () => {
     <div>
       <input
         type="text"
-        placeholder="Enter Task Name"
-        aria-label="Enter Task Name"
+        placeholder="Edit Task Name"
+        aria-label="Edit Task Name"
         value={nameInputValue}
         onChange={handleNameChange}
       />
       <input
         type="text"
-        placeholder="Enter Task Description"
-        aria-label="Enter Task Description"
+        placeholder="Edit Task Description"
+        aria-label="Edit Task Description"
         value={descInputValue}
         onChange={handleDescChange}
       />
       <input
         type="text"
-        placeholder="Enter Task Status"
-        aria-label="Enter Task status"
+        placeholder="Edit Task Status"
+        aria-label="Edit Task status"
         value={statusInputValue}
         onChange={handleStatusChange}
       />

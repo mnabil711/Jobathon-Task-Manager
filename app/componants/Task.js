@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import EditTask from "./EditTask";
+
 
 const Task = ({ name, description, taskStatus, deleteTask }) => {
   let color = "";
@@ -8,6 +10,12 @@ const Task = ({ name, description, taskStatus, deleteTask }) => {
     color = "text-success";
   }
 
+  const [editedTask,setEditedTask]=useState({name: name,
+  description: description,
+  taskStatus: taskStatus})
+
+  
+
   return (
     <div>
       <div>
@@ -16,7 +24,7 @@ const Task = ({ name, description, taskStatus, deleteTask }) => {
         <h5 className={color}>{taskStatus}</h5>
       </div>
 
-      <EditTask />
+      <EditTask edited={editedTask}/>
 
       <button
         className="btn btn-danger"
