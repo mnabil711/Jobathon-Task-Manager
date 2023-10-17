@@ -1,3 +1,5 @@
+import EditTask from "./EditTask";
+
 const Task = ({ name, description, taskStatus, deleteTask }) => {
   let color = "";
   if (taskStatus === "In Progress") {
@@ -13,9 +15,9 @@ const Task = ({ name, description, taskStatus, deleteTask }) => {
         <p>{description}</p>
         <h5 className={color}>{taskStatus}</h5>
       </div>
-      <button className="btn btn-success" type="button" id="button-addon2">
-        Edit
-      </button>
+
+      <EditTask />
+
       <button
         className="btn btn-danger"
         type="button"
