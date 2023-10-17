@@ -24,7 +24,6 @@ const EditTask = ({ edited }) => {
     setDescInputValue("");
     setStatusInputValue("");
     edited = task;
-    console.log(edited);
   };
 
   const handleNameChange = (e) => {
