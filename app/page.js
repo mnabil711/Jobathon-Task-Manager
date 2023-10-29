@@ -112,19 +112,17 @@ export default function Home() {
           Add
         </button>
       </div>
-      <div className="container">
-        <ul className="list-group row">
-          {tasks.map((task) => (
-            <li className="list-group-item col-lg" key={task.name}>
-              <Task
-                name={task.name}
-                description={task.description}
-                taskStatus={task.taskStatus}
-                deleteTask={handleDelTask}
-              />
-            </li>
-          ))}
-        </ul>
+      <div className="container row">
+        {tasks.map((task) => (
+          <div className="list-group-item col-lg-6 " key={task.name}>
+            <Task
+              name={task.name}
+              description={task.description}
+              taskStatus={task.taskStatus}
+              deleteTask={handleDelTask}
+            />
+          </div>
+        ))}
       </div>
     </main>
   );

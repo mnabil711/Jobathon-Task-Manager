@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const EditTask = ({ edited }) => {
-  const [task, setTask] = useState({
+const EditTask = ({ onEdit }) => {
+  const [editedTask, setEditedTask] = useState({
     name: "",
     description: "",
     taskStatus: "",
@@ -13,26 +13,28 @@ const EditTask = ({ edited }) => {
   const [statusInputValue, setStatusInputValue] = useState("");
 
   const handleEditTask = () => {
-    nameInputValue && descInputValue && statusInputValue !== ""
-      ? setTask({
-          name: nameInputValue,
-          description: descInputValue,
-          taskStatus: statusInputValue,
-        })
-      : null;
+    if (nameInputValue && descInputValue && statusInputValue !== "") {
+      setEditedTask({
+        name: nameInputValue,
+        description: descInputValue,
+        taskStatus: statusInputValue,
+      });
+      onEdit(editedTask); // Send the edited task back to the parent component
+    }
+
     setNameInputValue("");
     setDescInputValue("");
     setStatusInputValue("");
-    edited = task;
-    console.log(edited)
   };
 
   const handleNameChange = (e) => {
     setNameInputValue(e.target.value);
   };
+
   const handleDescChange = (e) => {
     setDescInputValue(e.target.value);
   };
+
   const handleStatusChange = (e) => {
     setStatusInputValue(e.target.value);
   };

@@ -16,7 +16,8 @@ const Task = ({ name, description, taskStatus, deleteTask }) => {
   });
 
   const handleEdit=(ed)=>{
-    setEditedTask(ed)
+  setEditedTask(ed);
+  console.log(editedTask)
   }
     
   
@@ -29,7 +30,7 @@ const Task = ({ name, description, taskStatus, deleteTask }) => {
         <h5 className={color}>{editedTask.taskStatus}</h5>
       </div>
 
-      <EditTask edited={handleEdit} />
+      <EditTask onEdit={handleEdit} />
 
       <button
         className="btn btn-danger"
