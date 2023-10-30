@@ -9,28 +9,52 @@ const Task = ({ name, description, taskStatus, deleteTask }) => {
     color = "text-success";
   }
 
+  const [isEditing, setIsEditing] = useState(false);
+
   const [editedTask, setEditedTask] = useState({
     name: name,
     description: description,
     taskStatus: taskStatus,
   });
 
-  const handleEdit=(ed)=>{
-  setEditedTask(ed);
-  console.log(editedTask)
-  }
+  // const handleEdit=(ed)=>{
+  // setEditedTask(ed);
+  // console.log(editedTask)
+  // }
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
     
-  
+  const handleUpdetedTask=(task)=>{
+    setEditedTask(task)
+    setIsEditing(false)
+  }
 
   return (
     <div>
+
+{isEditing ? (
+  <>
+  <h1>{editedTask.name}</h1>
+   <EditTask updetedTask={handleUpdetedTask} />
+   </>
+):(
       <div>
         <h1>{editedTask.name}</h1>
         <p>{editedTask.description}</p>
         <h5 className={color}>{editedTask.taskStatus}</h5>
+        <button
+        className="btn btn-success"
+        type="button"
+        id="button-addon2"
+        onClick={handleEdit}
+      >
+        Edit
+      </button>
       </div>
-
-      <EditTask onEdit={handleEdit} />
+)}
+     
 
       <button
         className="btn btn-danger"

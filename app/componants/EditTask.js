@@ -2,24 +2,24 @@
 
 import React, { useState } from "react";
 
-const EditTask = ({ onEdit }) => {
+const EditTask = ({ updetedTask }) => {
   const [editedTask, setEditedTask] = useState({
     name: "",
     description: "",
     taskStatus: "",
   });
+  
   const [nameInputValue, setNameInputValue] = useState("");
   const [descInputValue, setDescInputValue] = useState("");
   const [statusInputValue, setStatusInputValue] = useState("");
 
-  const handleEditTask = () => {
-    if (nameInputValue && descInputValue && statusInputValue !== "") {
+  const updetTask = () => {
+    if (nameInputValue !== "" && descInputValue !== "" && statusInputValue !== "") {
       setEditedTask({
         name: nameInputValue,
         description: descInputValue,
         taskStatus: statusInputValue,
       });
-      onEdit(editedTask); // Send the edited task back to the parent component
     }
 
     setNameInputValue("");
@@ -67,9 +67,13 @@ const EditTask = ({ onEdit }) => {
         className="btn btn-success"
         type="button"
         id="button-addon2"
-        onClick={handleEditTask}
+        onClick={() => {
+          updetTask();
+          console.log(editedTask);
+          updetedTask(editedTask);
+        }}
       >
-        Edit
+        Save
       </button>
     </div>
   );
