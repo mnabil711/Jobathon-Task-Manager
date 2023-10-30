@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EditTask from "./EditTask";
 
 const Task = ({ name, description, taskStatus, deleteTask }) => {
@@ -17,10 +17,6 @@ const Task = ({ name, description, taskStatus, deleteTask }) => {
     taskStatus: taskStatus,
   });
 
-  // const handleEdit=(ed)=>{
-  // setEditedTask(ed);
-  // console.log(editedTask)
-  // }
 
   const handleEdit = () => {
     setIsEditing(true);

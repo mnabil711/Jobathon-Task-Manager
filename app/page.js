@@ -43,7 +43,7 @@ export default function Home() {
   const [statusInputValue, setStatusInputValue] = useState("");
 
   const handleAddTask = () => {
-    nameInputValue && descInputValue && statusInputValue !== ""
+    nameInputValue !== "" && descInputValue!== "" && statusInputValue !== ""
       ? setTasks([
           ...tasks,
           {
